@@ -23,7 +23,7 @@ export default function RegisterForm() {
   console.log(confirmPassword)
 }
 const submitFormInputs = ()=>{
-  Axios.post('http://localhost:3001/api/insert',{
+  Axios.post('https://dulcet-paletas-080049.netlify.app:3007/api/insert',{
     userName:userName,
     password:password,
   })
