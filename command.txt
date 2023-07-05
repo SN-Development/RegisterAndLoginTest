@@ -1,0 +1,5 @@
+npm init -y
+npm install express cors nodemon mysql body-parse 
+
+"start":"index.js",
+"devStart": "nodemon index.js",

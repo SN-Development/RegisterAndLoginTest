@@ -1,0 +1,110 @@
+div.signup-form{
+    height: 85%;
+    width:60%;
+    /* background-color: aqua; */
+    border-radius:1em;
+    box-shadow:0  0.188em 1.550em rgb(64, 64, 230);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: auto;
+}
+p.signup-text{
+    font-family: 'Kanit', sans-serif;
+    font-size: 2vw;
+    font-weight: 700;
+    color: blue;
+}
+
+div.user-input{
+    width: 80%;
+    height: 15%;
+    margin-bottom:5%;
+    color:blue;
+    /* background-color: aquamarine;  */
+}
+label{
+    width:100%;
+    height: 30%;
+    /* color:rgb(56, 56, 223); */
+    color:blue;
+    /* background-color: aqua; */
+}
+input.input{
+    width:100%;
+    height: 50%;
+    margin-top: 2%;
+    padding: 2%;
+    border:none;
+    border-bottom: 1px solid rgb(52, 133, 245);
+    color:rgb(29, 26, 34);
+    font-size: 1vw;
+    /* background-color: rgba(194, 205, 217, 0.66); */
+}
+
+input:focus{
+    outline: none;
+    /* border: 1px solid rgb(52, 133, 245); */
+    /* background-color: rgb(236, 240, 244); */
+}
+form.login-btn{
+    width:60%;
+    height: 10%;
+    margin-top: 5%;
+}
+button.btn{
+    width:100%;
+    height:100%;
+    background-color:rgba(18, 83, 215, 0.735);
+    border:none;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.5vw;
+    font-weight: 700;
+    color:rgb(29, 30, 31);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    transition: 0.75s;
+}
+.btn:hover{
+    transform: scale(1.18);
+    color:white;
+    background-color: rgba(9, 86, 239, 0.94);
+}
+div.already-account{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+}
+Link.create-account{
+    text-decoration: none;
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.1vw;
+    margin-left: 5%;
+}
+.already-account p{
+    font-family: 'Kanit', sans-serif;
+    font-size: 0.9vw;
+}
+.hide{
+    position: absolute;
+    transform: scale(0);
+}
+.error-popup{
+    margin-top: 1%;
+    width:100%;
+    padding: 2%;
+    background-color: rgba(228, 144, 144, 0.681);
+    color:rgb(176, 22, 22);
+    font-family: 'Kanit', sans-serif;
+    font-size: 1vw;
+    transition: 0.5s;
+    transform: scale(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,12 @@
+div.right-part{
+    position: relative;
+    left:0%;
+    width:50%;
+    height:100%;
+    background-color:white;
+    border-radius: 1em;
+    border-top-left-radius: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
