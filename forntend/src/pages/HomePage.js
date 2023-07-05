@@ -67,9 +67,10 @@ export default function HomePage() {
     };
   return (
    <div>
+    <button onClick={testApiConnection}>Test API</button>
      {auth?( 
      <div>
-      <button onClick={testApiConnection}>Test API</button>
+      
       {user}
       <h1>Home page {user}</h1>
       <button onClick={handleLogOut}>logout</button>
