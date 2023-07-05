@@ -75,6 +75,7 @@ export default function LoginForm() {
     }).then(response=>{
       if(response.data.Status === "Success")
       {
+         alert("login-succcess")
          navigate('/home')
       }
       else{
