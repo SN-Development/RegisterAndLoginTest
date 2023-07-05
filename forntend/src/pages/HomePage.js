@@ -33,15 +33,19 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/home').then(res=>{
-              if(res.data.Status === "Success"){
-                  setAuth(true)
-                  setUser(res.data.name)
-              }
-              else{
+      // axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/home').then(res=>{
+      //         if(res.data.Status === "Success"){
+      //             setAuth(true)
+      //             setUser(res.data.name)
+      //         }
+      //         else{
     
-              }
-            })
+      //         }
+      //       })
+      axios.get('https://stupendous-donut-035fa3.netlify.app:3007/api/home').then(response=>{
+        setUser(response.data)
+        setAuth('')
+      })
     },[])
 
     const handleLogOut = ()=>{
@@ -56,6 +60,7 @@ export default function HomePage() {
    <div>
      {auth?( 
      <div>
+      {user}
       <h1>Home page {user}</h1>
       <button onClick={handleLogOut}>logout</button>
     </div>
