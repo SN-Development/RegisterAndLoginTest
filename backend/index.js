@@ -42,6 +42,7 @@ const db = mysql.createPool({
 //     methods:["GET","POST"],
 //     credentials:true
 // }))
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://dulcet-paletas-080049.netlify.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -89,6 +90,17 @@ const verifyUser = (req,res,next)=>{
   }
 }
 
+app.get('/api/home',(rq,res)=>{
+    const sqlSelect = "Select * From login"
+    db.query(sqlSelect,(err,result)=>{
+        if(err){
+            return res.json(err)
+        }
+        else{
+            return res.json(result)
+        }
+    })
+})
 
 app.get('/api/home',verifyUser,(req,res)=>{
    return res.json({Status:"Success",name:req.name})
@@ -110,7 +122,7 @@ app.post('/api/insert',(req,res)=>{
 })
 
 
-// app.post('/api/login',(req,res)=>{
+// app.get('/api/login',(req,res)=>{
 //     const userName = req.body.userName
 //     const password  = req.body.password
 //     console.log(userName)
