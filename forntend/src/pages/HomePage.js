@@ -42,10 +42,10 @@ export default function HomePage() {
     
               }
             })
-      // axios.get('https://reg-log-test4.onrender.com/api/home').then(response=>{
-      //   setUser(response.data)
-      //   //setAuth('')
-      // })
+      axios.get('https://reg-log-test4.onrender.com/api/home').then(response=>{
+        setUser(response.data)
+        //setAuth('')
+      })
     },[])
 
     const handleLogOut = ()=>{
