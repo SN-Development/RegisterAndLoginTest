@@ -47,6 +47,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://stupendous-donut-035fa3.netlify.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
   });
 app.use(express.json())
