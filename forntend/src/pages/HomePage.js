@@ -33,7 +33,7 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      axios.get('https://dulcet-paletas-080049.netlify.app/api/home').then(res=>{
+      axios.get('https://dulcet-paletas-080049.netlify.app:3007/api/home').then(res=>{
               if(res.data.Status === "Success"){
                   setAuth(true)
                   setUser(res.data.name)
