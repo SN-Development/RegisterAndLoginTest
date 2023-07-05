@@ -33,7 +33,7 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      axios.get('https://dulcet-paletas-080049.netlify.app:3007/api/home').then(res=>{
+      axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/home').then(res=>{
               if(res.data.Status === "Success"){
                   setAuth(true)
                   setUser(res.data.name)
@@ -45,7 +45,7 @@ export default function HomePage() {
     },[])
 
     const handleLogOut = ()=>{
-      axios.get('http://localhost:3007/api/logout').then(res=>{
+      axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/logout').then(res=>{
         if(res.data.Status === "Success"){
            navigate('/home')
            window.location.reload(true)

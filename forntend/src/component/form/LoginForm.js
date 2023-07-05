@@ -3,6 +3,7 @@ import './RegisterForm.css'
 import Axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import FormValidation from './FormValidation'
+import axios from 'axios'
 
 export default function LoginForm() {
 
@@ -68,11 +69,12 @@ export default function LoginForm() {
       setIsPasswordError(false)
     }
 
-    Axios.post('https://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/login',{
+    axios.post('http://https://dulcet-paletas-080049.netlify.app:3007/api/login',{
       userName:userName,
       password:password,
       
     }).then(response=>{
+      alert(response.data.message)
       if(response.data.Status === "Success")
       {
          alert("login-succcess")

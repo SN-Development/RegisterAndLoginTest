@@ -7,6 +7,12 @@ const jwt = require('jsonwebtoken')
 const app = express()
 const mysql = require("mysql")
 
+// const db   = mysql.createPool({
+//     host:'localhost',
+//     user:'root',
+//     password:'',
+//     database:'cruddb'
+// })
 
 const db = mysql.createPool({
     host:'bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com',
@@ -32,7 +38,7 @@ const db = mysql.createPool({
 //       });
 // })
 app.use(cors({
-    origin:['https://dulcet-paletas-080049.netlify.app'],
+    origin:['http://localhost:3000'],
     methods:["GET","POST"],
     credentials:true
 }))
@@ -84,7 +90,7 @@ app.get('/api/home',verifyUser,(req,res)=>{
 
 app.get('/api/logout',(req,res)=>{
     res.clearCookie("token")
-    console("logout")
+    console.log("logout")
     return res.json({Status:"Success"})
 })
 
@@ -98,34 +104,63 @@ app.post('/api/insert',(req,res)=>{
 })
 
 
-app.post('/api/login',(req,res)=>{
-    const userName = req.body.userName
-    const password  = req.body.password
-    console.log(userName)
-    console.log(password)
-    const sqlInsert = "SELECT UserName,Password FROM login WHERE UserName = ? AND Password = ? ;"
-    db.query(sqlInsert,[userName,password],(err,result)=>{
-        if(err){
-            console.log(err)
-        }
-        else{
-             if(result.length>0){
-                console.log("Success")
-                // req.session.userName = result[0].UserName
-                // console.log(req.session.userName)
-                // return res.json("Success")
-                const name = result[0].UserName
-                const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
-                res.cookie("token",token)
-                return res.json({Status:'Success'})
-             }
-             else{
-                return res.json({message:"The record does not include in db"})
-             }
-        }
-    })
+// app.post('/api/login',(req,res)=>{
+//     const userName = req.body.userName
+//     const password  = req.body.password
+//     console.log(userName)
+//     console.log(password)
+//     const sqlInsert = "SELECT UserName,Password FROM login WHERE UserName = ? AND Password = ? ;"
+//     db.query(sqlInsert,[userName,password],(err,result)=>{
+//         if(err){
+//             console.log(err)
+//         }
+//         else{
+//              if(result.length>0){
+//                 console.log("Success")
+//                 // req.session.userName = result[0].UserName
+//                 // console.log(req.session.userName)
+//                 // return res.json("Success")
+//                 const name = result[0].UserName
+//                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
+//                 res.cookie("token",token)
+//                 return res.json({Status:'Success'})
+//              }
+//              else{
+//                 return res.json({message:"The record does not include in db"})
+//              }
+//         }
+//     })
 
-})
+// })
+
+app.post('/api/login', (req, res) => {
+    //const { name, email } = req.body;
+    const userName = req.body.userName
+    const password = req.body.password
+    console.log(userName)
+    const query = 'INSERT INTO login (UserName, Password) VALUES (?, ?)';
+    const values = [userName, password];
+  
+    // db.getConnection((error, connection) => {
+    //   if (error) {
+    //     console.error('Error acquiring connection:', error);
+    //     return res.status(500).json({ error: 'Internal server error' });
+    //   }
+  
+      db.query(query, values, (error, results) => {
+        //connection.release();
+  
+        if (error) {
+          console.error('Error inserting data:', error);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+  
+        return res.status(200).json({ message: 'Data inserted successfully' });
+      });
+    });
+  //});
+  
+  // 
 
 app.post('/api/appointment',(req,res)=>{
     const date = req.body.date
