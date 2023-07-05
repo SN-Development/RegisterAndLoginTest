@@ -38,7 +38,7 @@ const db = mysql.createPool({
 //       });
 // })
 app.use(cors({
-    origin:['http://localhost:3000'],
+    origin:['https://dulcet-paletas-080049.netlify.app'],
     methods:["GET","POST"],
     credentials:true
 }))
