@@ -55,11 +55,21 @@ export default function HomePage() {
            window.location.reload(true)
         }
       }).catch(err=>console.log(err))
+
     }
+    const testApiConnection = async () => {
+      try {
+        const response = await axios.get('https://stupendous-donut-035fa3.netlify.app:3007/api/test');
+        console.log('API connection successful:', response.data);
+      } catch (error) {
+        console.error('API connection error:', error);
+      }
+    };
   return (
    <div>
      {auth?( 
      <div>
+      <button onClick={testApiConnection}>Test API</button>
       {user}
       <h1>Home page {user}</h1>
       <button onClick={handleLogOut}>logout</button>
