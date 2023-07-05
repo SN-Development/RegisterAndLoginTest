@@ -18,7 +18,7 @@ export default function LoginForm() {
       console.log(password)
    }
   const submitFormInputs = ()=>{
-    Axios.post('http://localhost:3001/api/insert',{
+    Axios.post('https://reg-log-test4.onrender.com/api/insert',{
       userName:userName,
       password:password,
     })
