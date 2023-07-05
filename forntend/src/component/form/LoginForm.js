@@ -69,7 +69,7 @@ export default function LoginForm() {
       setIsPasswordError(false)
     }
 
-    axios.post('http://https://dulcet-paletas-080049.netlify.app:3007/api/login',{
+    axios.post('https://dulcet-paletas-080049.netlify.app:3007/api/login',{
       userName:userName,
       password:password,
       
