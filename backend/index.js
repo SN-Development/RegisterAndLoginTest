@@ -84,6 +84,7 @@ app.get('/api/home',verifyUser,(req,res)=>{
 
 app.get('/api/logout',(req,res)=>{
     res.clearCookie("token")
+    console("logout")
     return res.json({Status:"Success"})
 })
 
