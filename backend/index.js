@@ -15,22 +15,22 @@ const db = mysql.createPool({
     database:'bdp8dkgd9zsnalqvs13y'
 })
 //console.log(db)
-db.getConnection((error, connection) => {
-    if (error) {
-      console.error('Error acquiring connection:', error);
-      return;
-    }
-    connection.query('SELECT * FROM login', (error, results) => {
-        connection.release(); // Release the connection back to the pool
+// db.getConnection((error, connection) => {
+//     if (error) {
+//       console.error('Error acquiring connection:', error);
+//       return;
+//     }
+//     connection.query('SELECT * FROM login', (error, results) => {
+//         connection.release(); // Release the connection back to the pool
     
-        if (error) {
-          console.error('Error executing query:', error);
-          return;
-        }
+//         if (error) {
+//           console.error('Error executing query:', error);
+//           return;
+//         }
     
-        console.log('Query results:', results);
-      });
-})
+//         console.log('Query results:', results);
+//       });
+// })
 app.use(cors({
     origin:['https://dulcet-paletas-080049.netlify.app'],
     methods:["GET","POST"],
