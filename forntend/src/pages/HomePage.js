@@ -33,23 +33,23 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      // axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/home').then(res=>{
-      //         if(res.data.Status === "Success"){
-      //             setAuth(true)
-      //             setUser(res.data.name)
-      //         }
-      //         else{
+      axios.get('https://reg-log-test4.onrender.com/api/home').then(res=>{
+              if(res.data.Status === "Success"){
+                  setAuth(true)
+                  setUser(res.data.name)
+              }
+              else{
     
-      //         }
-      //       })
-      axios.get('https://stupendous-donut-035fa3.netlify.app:3007/api/home').then(response=>{
-        setUser(response.data)
-        setAuth('')
-      })
+              }
+            })
+      // axios.get('https://reg-log-test4.onrender.com/api/home').then(response=>{
+      //   setUser(response.data)
+      //   //setAuth('')
+      // })
     },[])
 
     const handleLogOut = ()=>{
-      axios.get('http://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/logout').then(res=>{
+      axios.get('https://reg-log-test4.onrender.com/api/logout').then(res=>{
         if(res.data.Status === "Success"){
            navigate('/home')
            window.location.reload(true)

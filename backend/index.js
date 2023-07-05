@@ -123,60 +123,60 @@ app.post('/api/insert',(req,res)=>{
 })
 
 
-// app.get('/api/login',(req,res)=>{
-//     const userName = req.body.userName
-//     const password  = req.body.password
-//     console.log(userName)
-//     console.log(password)
-//     const sqlInsert = "SELECT UserName,Password FROM login WHERE UserName = ? AND Password = ? ;"
-//     db.query(sqlInsert,[userName,password],(err,result)=>{
-//         if(err){
-//             console.log(err)
-//         }
-//         else{
-//              if(result.length>0){
-//                 console.log("Success")
-//                 // req.session.userName = result[0].UserName
-//                 // console.log(req.session.userName)
-//                 // return res.json("Success")
-//                 const name = result[0].UserName
-//                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
-//                 res.cookie("token",token)
-//                 return res.json({Status:'Success'})
-//              }
-//              else{
-//                 return res.json({message:"The record does not include in db"})
-//              }
-//         }
-//     })
-
-// })
-
-app.post('/api/login', (req, res) => {
-    //const { name, email } = req.body;
+app.get('/api/login',(req,res)=>{
     const userName = req.body.userName
-    const password = req.body.password
+    const password  = req.body.password
     console.log(userName)
-    const query = 'INSERT INTO login (UserName, Password) VALUES (?, ?)';
-    const values = [userName, password];
-  
-    // db.getConnection((error, connection) => {
-    //   if (error) {
-    //     console.error('Error acquiring connection:', error);
-    //     return res.status(500).json({ error: 'Internal server error' });
-    //   }
-  
-      db.query(query, values, (error, results) => {
-        //connection.release();
-  
-        if (error) {
-          console.error('Error inserting data:', error);
-          return res.status(500).json({ error: 'Internal server error' });
+    console.log(password)
+    const sqlInsert = "SELECT UserName,Password FROM login WHERE UserName = ? AND Password = ? ;"
+    db.query(sqlInsert,[userName,password],(err,result)=>{
+        if(err){
+            console.log(err)
         }
+        else{
+             if(result.length>0){
+                console.log("Success")
+                // req.session.userName = result[0].UserName
+                // console.log(req.session.userName)
+                // return res.json("Success")
+                const name = result[0].UserName
+                const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
+                res.cookie("token",token)
+                return res.json({Status:'Success'})
+             }
+             else{
+                return res.json({message:"The record does not include in db"})
+             }
+        }
+    })
+
+})
+
+// app.post('/api/login', (req, res) => {
+//     //const { name, email } = req.body;
+//     const userName = req.body.userName
+//     const password = req.body.password
+//     console.log(userName)
+//     const query = 'INSERT INTO login (UserName, Password) VALUES (?, ?)';
+//     const values = [userName, password];
   
-        return res.status(200).json({ message: 'Data inserted successfully' });
-      });
-    });
+//     // db.getConnection((error, connection) => {
+//     //   if (error) {
+//     //     console.error('Error acquiring connection:', error);
+//     //     return res.status(500).json({ error: 'Internal server error' });
+//     //   }
+  
+//       db.query(query, values, (error, results) => {
+//         //connection.release();
+  
+//         if (error) {
+//           console.error('Error inserting data:', error);
+//           return res.status(500).json({ error: 'Internal server error' });
+//         }
+  
+//         return res.status(200).json({ message: 'Data inserted successfully' });
+//       });
+//     });
   //});
   
   // 
