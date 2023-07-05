@@ -4,8 +4,8 @@ import './App.css';
 import Loginpage from './pages/Loginpage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
-import SuccessfulTik from './component/successful_tik/SuccessfulTik';
-import Appoiintment from './component/appointment/Appoiintment';
+//import SuccessfulTik from './component/successful_tik/SuccessfulTik';
+//import Appoiintment from './component/appointment/Appoiintment';
 
 
 function App() {
