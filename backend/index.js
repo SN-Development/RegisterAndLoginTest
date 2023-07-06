@@ -59,15 +59,15 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(cookies())
-app.use(session({
-    secret:'secret',// a secret key used to encrypt the session cookie
-    resave:false,
-    saveUninitialized:false,
-    cookie:{
-        secure:true,
-        maxAge: 1000 * 60 * 60 * 24
-    } // set the session cookie properties
-}))
+// app.use(session({
+//     secret:'secret',// a secret key used to encrypt the session cookie
+//     resave:false,
+//     saveUninitialized:false,
+//     cookie:{
+//         secure:true,
+//         maxAge: 1000 * 60 * 60 * 24
+//     } // set the session cookie properties
+// }))
 
 // app.get('/api/home',(req,res)=>{
 //   if(req.session.userName){
@@ -157,14 +157,14 @@ app.post('/api/login',(req,res)=>{
         }
         else{
              if(result.length>0){
-                console.log("Success")
-                req.session.userName = result[0].UserName
-                console.log(req.session.userName)
-                return res.json({Status:"Success"})
-                // const name = result[0].UserName
-                // const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
-                // res.cookie("token",token)
-                // return res.json({Status:'Success',tok:token})
+                // console.log("Success")
+                // req.session.userName = result[0].UserName
+                // console.log(req.session.userName)
+                // return res.json({Status:"Success"})
+                const name = result[0].UserName
+                const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
+                res.cookie("token",token)
+                return res.json({Status:'Success',tok:token})
              }
              else{
                 return res.json({message:"The record does not include in db"})
