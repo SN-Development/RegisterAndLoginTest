@@ -68,7 +68,7 @@ export default function HomePage() {
     const testApiConnection = ()=>{
       axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
           //setUser(response.data.result.UserName)
-          console.log(response.data.UserName)
+          console.log(response.data)
           //setAuth('')
         })
     }
