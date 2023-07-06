@@ -79,7 +79,7 @@ app.use(cookies())
 // })
 
 const verifyUser = (req,res,next)=>{
-  const token = req.headers.Cookie
+  const token = req.body.token
   if(!token){
     console.log("Please Provide cookie")
     return res.json({Message:"Please Provide cookie"})
