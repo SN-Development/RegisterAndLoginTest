@@ -37,19 +37,19 @@ const db = mysql.createPool({
 //         console.log('Query results:', results);
 //       });
 // })
-// app.use(cors({
-//     origin:['https://dulcet-paletas-080049.netlify.app'],
-//     methods:["GET","POST"],
-//     credentials:true
-// }))
+app.use(cors({
+    origin:['https://cheerful-dieffenbachia-1c946f.netlify.app'],
+    methods:["GET","POST"],
+    credentials:true
+}))
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.setHeader('Access-Control-Allow-Credentials', 'true');
+//     next();
+//   });
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
