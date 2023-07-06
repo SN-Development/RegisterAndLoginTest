@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect,useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
-import Cookies from 'js-cookie';
+//import Cookies from 'js-cookie';
 
 export default function HomePage() {
     const [auth,setAuth] = useState(false)
