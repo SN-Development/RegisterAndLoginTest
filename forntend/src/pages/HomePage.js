@@ -33,7 +33,7 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      axios.get('https://reg-log-test4.onrender.com/api/login').then(res=>{
+      axios.get('https://reg-log-test4.onrender.com/api/home').then(res=>{
               if(res.data.Status === "Success"){
                   setAuth(true)
                   setUser(res.data.name)
@@ -68,7 +68,7 @@ export default function HomePage() {
     const testApiConnection = ()=>{
       axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
           //setUser(response.data.result.UserName)
-          console.log(response.data)
+          console.log(response.data.result)
           //setAuth('')
         })
     }
