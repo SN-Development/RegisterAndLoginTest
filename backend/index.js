@@ -7,19 +7,19 @@ const jwt = require('jsonwebtoken')
 const app = express()
 const mysql = require("mysql")
 
-// const db   = mysql.createPool({
-//     host:'localhost',
-//     user:'root',
-//     password:'',
-//     database:'cruddb'
-// })
-
-const db = mysql.createPool({
-    host:'bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com',
-    user:'ulj0efupmv2ddrxr',
-    password:'UARshKhnQOH3jP0BKYW5',
-    database:'bdp8dkgd9zsnalqvs13y'
+const db   = mysql.createPool({
+    host:'localhost',
+    user:'root',
+    password:'',
+    database:'cruddb'
 })
+
+// const db = mysql.createPool({
+//     host:'bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com',
+//     user:'ulj0efupmv2ddrxr',
+//     password:'UARshKhnQOH3jP0BKYW5',
+//     database:'bdp8dkgd9zsnalqvs13y'
+// })
 //console.log(db)
 // db.getConnection((error, connection) => {
 //     if (error) {

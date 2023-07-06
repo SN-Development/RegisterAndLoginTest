@@ -33,7 +33,7 @@ export default function HomePage() {
     // },[])
 
     useEffect(()=>{
-      axios.get('https://reg-log-test4.onrender.com/api/home').then(res=>{
+      axios.get('http://localhost:3007/api/home').then(res=>{
               if(res.data.Status === "Success"){
                   setAuth(true)
                   setUser(res.data.name)
@@ -49,7 +49,7 @@ export default function HomePage() {
     },[])
 
     const handleLogOut = ()=>{
-      axios.get('https://reg-log-test4.onrender.com/api/logout').then(res=>{
+      axios.get('http://localhost:3007/api/logout').then(res=>{
         if(res.data.Status === "Success"){
            navigate('/home')
            window.location.reload(true)
@@ -66,7 +66,7 @@ export default function HomePage() {
     //   }
     // }
     const testApiConnection = ()=>{
-      axios.post('https://reg-log-test4.onrender.com/api/insert').then(response=>{
+      axios.post('http://localhost:3007/api/insert').then(response=>{
           //setUser(response.data.result.UserName)
           console.log(response.data)
           //setAuth('')
