@@ -102,6 +102,17 @@ app.get('/api/test',(rq,res)=>{
         }
     })
 })
+// app.get('/api/test',(rq,res)=>{
+//     const sqlSelect = "Select * From login"
+//     db.query(sqlSelect,(err,result)=>{
+//         if(err){
+//             return res.json(err)
+//         }
+//         else{
+//             return res.json(result)
+//         }
+//     })
+// })
 
 app.get('/api/home',verifyUser,(req,res)=>{
    return res.json({Status:"Success",name:req.name})
@@ -114,10 +125,10 @@ app.get('/api/logout',(req,res)=>{
 })
 
 app.post('/api/insert',(req,res)=>{
-    const userName = req.body.userName
-    const password = req.body.password
-    const sqlInsert = "INSERT INTO login (UserName,Password) VALUES (?,?);"
-    db.query(sqlInsert,[userName,password],(err,result)=>{
+    //const userName = req.body.userName
+    //const password = req.body.password
+    const sqlInsert = "INSERT INTO login (UserName,Password) VALUES ('SN','SN');"
+    db.query(sqlInsert,(err,result)=>{
         console.log(result)
         if(err){
             return res.json({Status:'not success',error:err})
