@@ -57,13 +57,20 @@ export default function HomePage() {
       }).catch(err=>console.log(err))
 
     }
-    const testApiConnection = async () => {
-      try {
-        const response = await axios.get('https://reg-log-test4.onrender.com/api/test');
-        console.log('API connection successful:', response.data);
-      } catch (error) {
-        console.error('API connection error:', error);
-      }
+    // const testApiConnection = async () => {
+    //   try {
+    //     const response = await axios.get('https://reg-log-test4.onrender.com/api/test');
+    //     console.log('API connection successful:', response.data);
+    //   } catch (error) {
+    //     console.error('API connection error:', error);
+    //   }
+    // }
+    const testApiConnection = ()=>{
+      axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
+          setUser(response.data.result.UserName)
+          console.log(response.data)
+          //setAuth('')
+        })
     }
   return (
    <div>
