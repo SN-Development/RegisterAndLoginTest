@@ -37,12 +37,17 @@ const db   = mysql.createPool({
 //         console.log('Query results:', results);
 //       });
 // })
+// app.use(cors({
+//     origin:['https://cheerful-dieffenbachia-1c946f.netlify.app'],
+//     methods:["GET","POST"],
+//     credentials:true
+// }))
+
 app.use(cors({
-    origin:['https://cheerful-dieffenbachia-1c946f.netlify.app'],
+    origin:['http://localhost:3000'],
     methods:["GET","POST"],
     credentials:true
 }))
-
 // app.use((req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -54,15 +59,15 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(cookies())
-// app.use(session({
-//     secret:'secret',// a secret key used to encrypt the session cookie
-//     resave:false,
-//     saveUninitialized:false,
-//     cookie:{
-//         secure:false,
-//         maxAge: 1000 * 60 * 60 * 24
-//     } // set the session cookie properties
-// }))
+app.use(session({
+    secret:'secret',// a secret key used to encrypt the session cookie
+    resave:false,
+    saveUninitialized:false,
+    cookie:{
+        secure:false,
+        maxAge: 1000 * 60 * 60 * 24
+    } // set the session cookie properties
+}))
 
 // app.get('/api/home',(req,res)=>{
 //   if(req.session.userName){
@@ -73,23 +78,23 @@ app.use(cookies())
 //   }
 // })
 
-const verifyUser = (req,res,next)=>{
-  const token = req.cookies.token
-  if(!token){
-    return res.json({Message:"Please Provide cookie"})
-  }
-  else{
-    jwt.verify(token,"our-jsonwebtoken-secret-key",(err,decoded)=>{
-        if(err){
-            return res.json({Message:"Authentication error"})
-        }
-        else{
-            req.name = decoded.name;
-            next()
-        }
-    })
-  }
-}
+// const verifyUser = (req,res,next)=>{
+//   const token = req.cookies.token
+//   if(!token){
+//     return res.json({Message:"Please Provide cookie"})
+//   }
+//   else{
+//     jwt.verify(token,"our-jsonwebtoken-secret-key",(err,decoded)=>{
+//         if(err){
+//             return res.json({Message:"Authentication error"})
+//         }
+//         else{
+//             req.name = decoded.name;
+//             next()
+//         }
+//     })
+//   }
+// }
 
 app.get('/api/test',(rq,res)=>{
     const sqlSelect = "Select * From login"
@@ -114,15 +119,15 @@ app.get('/api/test',(rq,res)=>{
 //     })
 // })
 
-app.get('/api/home',verifyUser,(req,res)=>{
-   return res.json({Status:"Success",name:req.name})
-})
+// app.get('/api/home',verifyUser,(req,res)=>{
+//    return res.json({Status:"Success",name:req.name})
+// })
 
-app.get('/api/logout',(req,res)=>{
-    res.clearCookie("token")
-    console.log("logout")
-    return res.json({Status:"Success"})
-})
+// app.get('/api/logout',(req,res)=>{
+//     res.clearCookie("token")
+//     console.log("logout")
+//     return res.json({Status:"Success"})
+// })
 
 app.post('/api/insert',(req,res)=>{
     const userName = req.body.userName
@@ -153,13 +158,13 @@ app.post('/api/login',(req,res)=>{
         else{
              if(result.length>0){
                 console.log("Success")
-                // req.session.userName = result[0].UserName
-                // console.log(req.session.userName)
-                // return res.json("Success")
-                const name = result[0].UserName
-                const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
-                res.cookie("token",token)
-                return res.json({Status:'Success',tok:token})
+                req.session.userName = result[0].UserName
+                console.log(req.session.userName)
+                return res.json({Status:"Success"})
+                // const name = result[0].UserName
+                // const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
+                // res.cookie("token",token)
+                // return res.json({Status:'Success',tok:token})
              }
              else{
                 return res.json({message:"The record does not include in db"})
