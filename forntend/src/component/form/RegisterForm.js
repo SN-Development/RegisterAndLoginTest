@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './RegisterForm.css'
-import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function RegisterForm() {
 
@@ -23,7 +23,7 @@ export default function RegisterForm() {
   console.log(confirmPassword)
 }
 const submitFormInputs = ()=>{
-  Axios.post('https://bdp8dkgd9zsnalqvs13y-mysql.services.clever-cloud.com:3007/api/insert',{
+  axios.post('https://reg-log-test4.onrender.com/api/insert',{
     userName:userName,
     password:password,
   })
