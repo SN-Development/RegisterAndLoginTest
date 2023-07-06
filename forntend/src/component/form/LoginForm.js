@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import FormValidation from './FormValidation'
 import axios from 'axios'
-import Cookies from 'js-cookie';
+//import Cookies from 'js-cookie';
 
 
 export default function LoginForm() {
@@ -82,8 +82,8 @@ export default function LoginForm() {
       //   Cookies.set('token', token);}
       if(response.data.Status === "Success")
       {
-        const token = response.data.tok;
-        Cookies.set('token', token);
+        // const token = response.data.tok;
+        // Cookies.set('token', token);
          alert("login-succcess")
          alert(response.data.tok)
          navigate('/home')
