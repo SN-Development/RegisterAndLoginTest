@@ -23,11 +23,7 @@ export default function HomePage() {
 
     //     //  )
         //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic25AZ21haWwuY29tIiwiaWF0IjoxNjg4NjY3NjYzLCJleHAiOjE2ODg3NTQwNjN9.kzKm9gPmTOZEBsyDLY3KKJ26sWgwrsPa9J_tTIMzGqE'
-        axios.get('http://localhost:3007/api/home',{
-          headers: {
-            Cookie:Cookies.get('token'),
-          },
-        }).then(res=>{
+        axios.get('http://localhost:3007/api/home').then(res=>{
           if(res.data.Status === "Success"){
               setAuth(true)
               setUser(res.data.name)
