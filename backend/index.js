@@ -119,6 +119,12 @@ app.post('/api/insert',(req,res)=>{
     const sqlInsert = "INSERT INTO login (UserName,Password) VALUES (?,?);"
     db.query(sqlInsert,[userName,password],(err,result)=>{
         console.log(result)
+        if(err){
+            return res.json({Status:'not success',error:err})
+        }
+        else{
+            return res.json({Status:'success',rslt:result})
+        }
     })
 })
 

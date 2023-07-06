@@ -26,6 +26,13 @@ const submitFormInputs = ()=>{
   Axios.post('https://reg-log-test4.onrender.com/api/insert',{
     userName:userName,
     password:password,
+  }).then(response=>{
+      if(response.data.Status==='success'){
+        alert(response.data.rslt)
+      }
+      else{
+        alert(response.data.error)
+      }
   })
 }
 
