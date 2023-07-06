@@ -74,10 +74,11 @@ export default function LoginForm() {
       password:password,
       
     }).then(response=>{
-      alert(response.data.message)
+      //alert(response.data.message)
       if(response.data.Status === "Success")
       {
          alert("login-succcess")
+         alert(response.data.tok)
          navigate('/home')
       }
       else{

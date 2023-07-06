@@ -159,7 +159,7 @@ app.post('/api/login',(req,res)=>{
                 const name = result[0].UserName
                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
                 res.cookie("token",token)
-                return res.json({Status:'Success'})
+                return res.json({Status:'Success',tok:token})
              }
              else{
                 return res.json({message:"The record does not include in db"})
