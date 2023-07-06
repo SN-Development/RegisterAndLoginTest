@@ -44,10 +44,10 @@ export default function HomePage() {
       //            alert("not success")
       //         }
       //       })
-      // axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
-      //   setUser(response.data)
-      //   //setAuth('')
-      // })
+      axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
+        setUser(response.data)
+        //setAuth('')
+      })
     },[])
 
     const handleLogOut = ()=>{
