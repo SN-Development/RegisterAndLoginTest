@@ -91,7 +91,7 @@ const verifyUser = (req,res,next)=>{
   }
 }
 
-app.get('/api/home',(rq,res)=>{
+app.get('/api/test',(rq,res)=>{
     const sqlSelect = "Select * From login"
     db.query(sqlSelect,(err,result)=>{
         if(err){
