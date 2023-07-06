@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './RegisterForm.css'
-import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function LoginForm() {
 
@@ -18,7 +18,8 @@ export default function LoginForm() {
       console.log(password)
    }
   const submitFormInputs = ()=>{
-    Axios.post('https://reg-log-test4.onrender.com/api/insert',{
+    alert(userName)
+    axios.post('https://reg-log-test4.onrender.com/api/insert',{
       userName:userName,
       password:password,
     })
