@@ -114,7 +114,7 @@ app.get('/api/test',(rq,res)=>{
 //     })
 // })
 
-app.get('/api/home',verifyUser,(req,res)=>{
+app.get('/api/home',(req,res)=>{
    return res.json({Status:"Success",name:req.name})
 })
 
