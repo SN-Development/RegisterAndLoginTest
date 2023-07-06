@@ -78,23 +78,25 @@ app.use(cookies())
 //   }
 // })
 
-// const verifyUser = (req,res,next)=>{
-//   const token = req.cookies.token
-//   if(!token){
-//     return res.json({Message:"Please Provide cookie"})
-//   }
-//   else{
-//     jwt.verify(token,"our-jsonwebtoken-secret-key",(err,decoded)=>{
-//         if(err){
-//             return res.json({Message:"Authentication error"})
-//         }
-//         else{
-//             req.name = decoded.name;
-//             next()
-//         }
-//     })
-//   }
-// }
+const verifyUser = (req,res,next)=>{
+  const token = req.cookies.token
+  if(!token){
+    console.log("Please Provide cookie")
+    return res.json({Message:"Please Provide cookie"})
+  }
+  else{
+    jwt.verify(token,"our-jsonwebtoken-secret-key",(err,decoded)=>{
+        if(err){
+            console.log("Authentication error")
+            return res.json({Message:"Authentication error"})
+        }
+        else{
+            req.name = decoded.name;
+            next()
+        }
+    })
+  }
+}
 
 app.get('/api/test',(rq,res)=>{
     const sqlSelect = "Select * From login"
@@ -119,9 +121,9 @@ app.get('/api/test',(rq,res)=>{
 //     })
 // })
 
-// app.get('/api/home',verifyUser,(req,res)=>{
-//    return res.json({Status:"Success",name:req.name})
-// })
+app.get('/api/home',verifyUser,(req,res)=>{
+   return res.json({Status:"Success",name:req.name})
+})
 
 // app.get('/api/logout',(req,res)=>{
 //     res.clearCookie("token")
