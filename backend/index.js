@@ -123,7 +123,7 @@ app.post('/api/insert',(req,res)=>{
 })
 
 
-app.get('/api/login',(req,res)=>{
+app.post('/api/login',(req,res)=>{
     const userName = req.body.userName
     const password  = req.body.password
     console.log(userName)
