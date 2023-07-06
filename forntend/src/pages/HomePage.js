@@ -39,7 +39,7 @@ export default function HomePage() {
                   setUser(res.data.name)
               }
               else{
-    
+                 alert("not success")
               }
             })
       // axios.get('https://reg-log-test4.onrender.com/api/test').then(response=>{
