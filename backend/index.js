@@ -125,10 +125,10 @@ app.get('/api/logout',(req,res)=>{
 })
 
 app.post('/api/insert',(req,res)=>{
-    //const userName = req.body.userName
-    //const password = req.body.password
-    const sqlInsert = "INSERT INTO login (UserName,Password) VALUES ('SN','SN');"
-    db.query(sqlInsert,(err,result)=>{
+    const userName = req.body.userName
+    const password = req.body.password
+    const sqlInsert = "INSERT INTO login (UserName,Password) VALUES (?,?);"
+    db.query(sqlInsert,[userName,password],(err,result)=>{
         console.log(result)
         if(err){
             return res.json({Status:'not success',error:err})

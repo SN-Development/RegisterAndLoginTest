@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './RegisterForm.css'
-import Axios from 'axios'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function RegisterForm() {
 
@@ -23,12 +23,14 @@ export default function RegisterForm() {
   console.log(confirmPassword)
 }
 const submitFormInputs = ()=>{
-  Axios.post('https://reg-log-test4.onrender.com/api/insert',{
+  alert(userName,password)
+  axios.post('https://reg-log-test4.onrender.com/api/insert',{
     userName:userName,
     password:password,
   }).then(response=>{
       if(response.data.Status==='success'){
         alert(response.data.rslt)
+        console.log(response.data)
       }
       else{
         alert(response.data.error)
