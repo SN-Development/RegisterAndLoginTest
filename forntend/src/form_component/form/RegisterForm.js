@@ -23,7 +23,7 @@ export default function RegisterForm() {
   console.log(confirmPassword)
 }
 const submitFormInputs = ()=>{
-  alert(userName,password)
+  alert(userName)
   axios.post('https://reg-log-test4.onrender.com/api/insert',{
     userName:userName,
     password:password,
