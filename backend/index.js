@@ -49,7 +49,7 @@ const db = mysql.createPool({
 //     credentials:true
 // }))
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://reg-log.onrender.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://reg-log.onrender.com/');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -166,7 +166,7 @@ app.post('/api/login',(req,res)=>{
                 const name = result[0].UserName
                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
                 //res.cookie("token",token)
-                res.cookie("token", token, { maxAge: 86400000, httpOnly: true,path:'/' });
+                res.cookie("token", token, { maxAge: 86400000, httpOnly: true, path:'/',  domain: '.onrender.com',Secure:true,sameSite:"none" });
                 return res.json({Status:'Success',tok:token})
              }
              else{
