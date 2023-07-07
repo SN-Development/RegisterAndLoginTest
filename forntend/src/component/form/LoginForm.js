@@ -71,15 +71,15 @@ export default function LoginForm() {
       //alert("No error")
       setIsPasswordError(false)
     }
-    const config = {
-      headers:{"Content-Type":"application/json"},
-      withCredentials:true
-    }
+    // const config = {
+    //   headers:{"Content-Type":"application/json"},
+    //   withCredentials:true
+    // }
     axios.post('/api/login',{
       userName:userName,
       password:password,
       
-    },config).then(response=>{
+    }).then(response=>{
       //alert(response.data.message)
       // if (response.status === 200) {
       //   const token = response.data.tok;
