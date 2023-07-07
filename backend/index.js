@@ -37,11 +37,11 @@ const db = mysql.createPool({
 //         console.log('Query results:', results);
 //       });
 // })
-app.use("*",cors({
-    origin:true,
-    methods:["GET","POST"],
-    credentials:true
-}))
+// app.use("*",cors({
+//     origin:true,
+//     methods:["GET","POST"],
+//     credentials:true
+// }))
 
 // app.use(cors({
 //     origin:['http://localhost:3000'],
@@ -77,7 +77,9 @@ app.use(cookies())
 //     return res.json({valid:false})
 //   }
 // })
-
+app.get('/',(req,res)=>{
+    
+})
 const verifyUser = (req,res,next)=>{
   const token = req.cookies.token
   if(!token){
@@ -166,8 +168,9 @@ app.post('/api/login',(req,res)=>{
                 const name = result[0].UserName
                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
                 //res.cookie("token",token)
-                res.cookie("token", token, { maxAge: 86400000, httpOnly: true, path:'/',  domain: '.onrender.com',Secure:true, });
-                return res.json({Status:'Success',tok:token})
+               //res.cookie("token", token, { maxAge: 86400000, httpOnly: true, path:'/',  domain: '.onrender.com',Secure:true, });
+               res.cookie("token", token,)
+               return res.json({Status:'Success',tok:token})
              }
              else{
                 return res.json({message:"The record does not include in db"})
