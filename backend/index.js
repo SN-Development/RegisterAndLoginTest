@@ -38,7 +38,7 @@ const db = mysql.createPool({
 //       });
 // })
 app.use(cors({
-    origin:['https://https://reg-log.onrender.com'],
+    origin:['https://reg-log.onrender.com'],
     methods:["GET","POST"],
     credentials:true
 }))
