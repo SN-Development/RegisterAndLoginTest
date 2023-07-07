@@ -68,7 +68,7 @@ export default function HomePage() {
     //   }
     // }
     const testApiConnection = ()=>{
-      axios.post('https://reg-log-onrender-api.onrender.com/api/insert').then(response=>{
+      axios.post('/api/insert').then(response=>{
           //setUser(response.data.result.UserName)
           console.log(response.data)
           //setAuth('')
