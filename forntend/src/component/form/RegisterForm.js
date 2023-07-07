@@ -23,7 +23,7 @@ export default function RegisterForm() {
   console.log(confirmPassword)
 }
 const submitFormInputs = ()=>{
-  axios.post('http://localhost:3007/api/insert',{
+  axios.post('/api/insert',{
     userName:userName,
     password:password,
   })

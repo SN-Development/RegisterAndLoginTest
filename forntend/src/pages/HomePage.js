@@ -23,7 +23,7 @@ export default function HomePage() {
 
     //     //  )
         //let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic25AZ21haWwuY29tIiwiaWF0IjoxNjg4NjY3NjYzLCJleHAiOjE2ODg3NTQwNjN9.kzKm9gPmTOZEBsyDLY3KKJ26sWgwrsPa9J_tTIMzGqE'
-        axios.get('https://reg-log-onrender-api.onrender.com/api/home').then(res=>{
+        axios.get('/api/home').then(res=>{
           if(res.data.Status === "Success"){
               setAuth(true)
               setUser(res.data.name)
@@ -44,14 +44,14 @@ export default function HomePage() {
       //            alert("not success")
       //         }
       //       })
-      axios.get('https://reg-log-onrender-api.onrender.com/api/test').then(response=>{
+      axios.get('/api/test').then(response=>{
         setUser(response.data)
         //setAuth('')
       })
     },[])
 
     const handleLogOut = ()=>{
-      axios.get('https://reg-log-onrender-api.onrender.com/api/logout').then(res=>{
+      axios.get('/api/logout').then(res=>{
         if(res.data.Status === "Success"){
            navigate('/home')
            window.location.reload(true)
