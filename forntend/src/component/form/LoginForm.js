@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import './RegisterForm.css'
 import Axios from 'axios'
-import { Link} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
+
 import FormValidation from './FormValidation'
 import axios from 'axios'
 //import Cookies from 'js-cookie';
@@ -16,7 +17,7 @@ export default function LoginForm() {
     const [isPasswordError, setIsPasswordError] = useState(false) 
     const [userErrorPopUp,setUserErrorPopUP] = useState("")
     const [passwordErrorPopUp,setPasswordErrorPopUP] = useState("")
-    //const navigate = useNavigate()
+    const navigate = useNavigate()
     
     //to get input of the form
     const getUserName = (event)=>{
@@ -86,7 +87,7 @@ export default function LoginForm() {
         // Cookies.set('token', token);
          alert("login-succcess")
          alert(response.data.tok)
-         //navigate('/hom')
+         navigate('/home')
       }
       else{
         alert(response.data.message)
