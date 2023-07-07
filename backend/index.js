@@ -77,9 +77,11 @@ app.use(cookies())
 //     return res.json({valid:false})
 //   }
 // })
-app.get('/',(req,res)=>{
+// app.get('/',(req,res)=>{
     
-})
+// })
+app.use(express.static('build'))
+
 const verifyUser = (req,res,next)=>{
   const token = req.cookies.token
   if(!token){
