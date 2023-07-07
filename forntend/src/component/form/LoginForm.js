@@ -126,7 +126,10 @@ export default function LoginForm() {
       <div className='already-account'>
          <p>Create an account </p>
          {/* <a href='#' className='create-account'>Sign up</a> */}
-         <Link to='/register' style={{color:'blue',textDecoration:'none',marginLeft:'5%',marginTop:'-1%'}}>Sign up</Link>
+         {/* <Link to='/register' style={{color:'blue',textDecoration:'none',marginLeft:'5%',marginTop:'-1%'}}>Sign up</Link> */}
+         <p onClick={()=>{
+           navigate('/register')
+         }}>Sign up</p>
       </div>
      
       
