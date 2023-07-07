@@ -37,24 +37,24 @@ const db = mysql.createPool({
 //         console.log('Query results:', results);
 //       });
 // })
-// app.use(cors({
-//     origin:['https://cheerful-dieffenbachia-1c946f.netlify.app'],
-//     methods:["GET","POST"],
-//     credentials:true
-// }))
+app.use(cors({
+    origin:['https://https://reg-log.onrender.com'],
+    methods:["GET","POST"],
+    credentials:true
+}))
 
 // app.use(cors({
 //     origin:['http://localhost:3000'],
 //     methods:["GET","POST"],
 //     credentials:true
 // }))
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://reg-log.onrender.com');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', 'https://reg-log.onrender.com');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.setHeader('Access-Control-Allow-Credentials', 'true');
+//     next();
+//   });
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
@@ -166,7 +166,7 @@ app.post('/api/login',(req,res)=>{
                 const name = result[0].UserName
                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
                 //res.cookie("token",token)
-                res.cookie("token", token, { maxAge: 86400000, httpOnly: true, path:'/',  domain: '.onrender.com',Secure:true,sameSite:"none" });
+                res.cookie("token", token, { maxAge: 86400000, httpOnly: true, path:'/',  domain: '.onrender.com',Secure:true, });
                 return res.json({Status:'Success',tok:token})
              }
              else{
