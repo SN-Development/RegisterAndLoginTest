@@ -166,7 +166,7 @@ app.post('/api/login',(req,res)=>{
                 const name = result[0].UserName
                 const token = jwt.sign({name},"our-jsonwebtoken-secret-key",{expiresIn:'1d'})
                 //res.cookie("token",token)
-                res.cookie("token", token, { maxAge: 86400000, httpOnly: true });
+                res.cookie("token", token, { maxAge: 86400000, httpOnly: true,path:'/' });
                 return res.json({Status:'Success',tok:token})
              }
              else{
