@@ -75,7 +75,7 @@ export default function LoginForm() {
       headers:{"Content-Type":"application/json"},
       withCredentials:true
     }
-    axios.post('https://reg-log-onrender-api.onrender.com/api/login',{
+    axios.post('/api/login',{
       userName:userName,
       password:password,
       
