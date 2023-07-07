@@ -71,12 +71,15 @@ export default function LoginForm() {
       //alert("No error")
       setIsPasswordError(false)
     }
-
+    const config = {
+      headers:{"Content-Type":"application/json"},
+      withCredentials:true
+    }
     axios.post('https://reg-log-onrender-api.onrender.com/api/login',{
       userName:userName,
       password:password,
       
-    }).then(response=>{
+    },config).then(response=>{
       //alert(response.data.message)
       // if (response.status === 200) {
       //   const token = response.data.tok;
