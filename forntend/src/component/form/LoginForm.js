@@ -13,7 +13,7 @@ export default function LoginForm() {
     const [password,setPassword] = useState("")
     const [error,setError] = useState([])
     const [isUserError, setIsUserError] = useState(false)
-    const [isPasswordError, setIsPasswordError] = useState(false)
+    const [isPasswordError, setIsPasswordError] = useState(false) 
     const [userErrorPopUp,setUserErrorPopUP] = useState("")
     const [passwordErrorPopUp,setPasswordErrorPopUP] = useState("")
     //const navigate = useNavigate()
