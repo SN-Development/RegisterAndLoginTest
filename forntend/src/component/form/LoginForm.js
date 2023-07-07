@@ -86,7 +86,7 @@ export default function LoginForm() {
         // Cookies.set('token', token);
          alert("login-succcess")
          alert(response.data.tok)
-         //navigate('/home')
+         //navigate('/hom')
       }
       else{
         alert(response.data.message)
